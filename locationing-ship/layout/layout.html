@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Trang quản trị</title>
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" />
+    <link href="css/bootstrap-responsive.css" type="text/css" rel="stylesheet" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script type="text/javascript" src="../common/js/layout.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+          <a class="brand" href="javascript:;"><i class="icon-logo"> </i>Hệ thống định vị tàu biển</a>
+          <ul class="nav pull-right">
+            <li></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-user icon-white"> </i> Administrator 
+                <i class="icon-cog icon-white"> </i><i class="caret"> </i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="icon-info-sign"> </i> User Infomation</a></li>
+                <li><a href="#"><i class="icon-lock"> </i> Change Password</a></li>
+                <li class="divider"> </li>
+                <li><a href="#"><i class="icon-off"> </i> Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="wrapper">
+      <div class="container-fluid container-cus">
+        <div class="row-fluid row-fluid-cus">
+          <div class="span3 span3-cus">
+            <!--Sidebar content-->
+            <ul class="nav nav-list">
+              <li class="nav-header">Chức năng</li>
+              <li class="active">
+                <a href="#"><i class="icon-tags icon-white"> </i> Quản lý đăng kiểm</a>
+              </li>
+              <li>
+                <a href="#"><i class="icon-retweet"> </i> Quản lý lịch trình ra vào</a>
+              </li>
+              <li>
+                <a href="#"><i class="icon-search"> </i> Tra cứu thông tin</a>
+              </li>
+              <li>
+                <a href="#"><i class="icon-map-marker"> </i> Xem bản đồ lộ trình</a>
+              </li>
+              <li>
+                <a href="#"><i class="icon-globe"> </i> Thống kê - theo dõi</a>
+              </li>
+              <li>
+                <a href="#"><i class="icon-screenshot"> </i> Điều hướng bão</a>
+              </li>
+              <li>
+                <a href="#"><i class="icon-eye-open"> </i> Theo dõi thời tiết</a>
+              </li>
+              <li>
+                <a href="#"><i class="icon-hdd"> </i> Sao lưu - phục hồi dữ liệu</a>
+              </li>
+              <li>
+                <a href="#"><i class="icon-question-sign"> </i> Trợ giúp - thông báo lỗi</a>
+              </li>
+            </ul>
+          </div>
+          <div class="span9 span9-cus">
+            <!--Body content-->
+            <div id="management-info">
+              <div id="out-to-sea" class="alert alert-error">
+                <i class="icon-warning-sign"></i> Tàu đang trên biển <span class="badge badge-important pull-right">3</span>
+              </div>
+              <div id="under-control" class="alert alert-success">
+                <i class="icon-facetime-video"></i> Tàu thuộc quyền kiểm soát <span class="badge badge-success pull-right">14</span>
+              </div>
+              <div id="transfer-signal" class="alert alert-success">
+                <i class="icon-resize-small"></i> Tàu đang truyền tín hiệu <span class="badge badge-success pull-right">2</span>
+              </div>
+              <div id="user-online" class="alert alert-info">
+                <i class="icon-user"></i> Người dùng online <span class="badge badge-info pull-right">1</span>
+              </div>
+              <br class="clearfix" />
+            </div>
+            <div class="content-cus">
+              <!-- INSERT TABLE HERE -->
+              <div id="htdvtb-map"> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="footer">
+        &copy; Hệ thống định vị tàu biển <span id="htdvtb-year"></span>
+      </div>
+    </div>
+  </body>
+</html>
