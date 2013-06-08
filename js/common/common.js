@@ -31,8 +31,10 @@ var geturl = function(path){
   var ext = dvtb.ext || '.php';
   if(path.indexOf('/')==0){
     return url + path + ext;
+    // return url + '/' + prefix + path + ext;
   }else{
     return url + '/' + path + ext;
+    //return url + '/' + prefix + '/' + path + ext;
   }
 };
 /** 
