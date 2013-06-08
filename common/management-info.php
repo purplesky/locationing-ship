@@ -3,7 +3,7 @@
     <i class="icon-warning-sign"></i> Tàu đang trên biển
     <span class="badge badge-important pull-right">
       <?php
-        include ("connect.php");
+        include ("/core/include/connect.php");
         $sql = "SELECT * FROM dvtb_tauonline";
         $result = mysql_query($sql);
         $dem = mysql_num_rows($result);
@@ -15,7 +15,7 @@
     <i class="icon-facetime-video"></i> Tàu thuộc quyền kiểm soát 
     <span class="badge badge-success pull-right">
       <?php
-        include ("connect.php");
+        include ("/core/include/connect.php");
         $sql = "SELECT * FROM dvtb_chung";
         $result = mysql_query($sql);
         $dem = mysql_num_rows($result);
@@ -27,7 +27,7 @@
     <i class="icon-resize-small"></i> Tàu đang truyền tín hiệu 
     <span class="badge badge-success pull-right"> 
       <?php
-        include ("connect.php");
+        include ("/core/include/connect.php");
         $sql = "SELECT * FROM dvtb_lichtrinh";
         $result = mysql_query($sql);
         $dem = mysql_num_rows($result);

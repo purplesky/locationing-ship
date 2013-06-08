@@ -1,0 +1,4 @@
+SELECT dvtb_quanlytv . * , dvtb_chung . * 
+FROM dvtb_quanlytv
+INNER JOIN dvtb_chung ON dvtb_quanlytv.MATAU = dvtb_chung.MATAU
+LIMIT 0 , 30
