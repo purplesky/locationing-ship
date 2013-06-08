@@ -12,7 +12,7 @@ var dvtb = {
   URL : document.URL,
   title : document.title,
   path: window.location.pathname,
-  prefix : 'locationing-ship'
+  prefix : 'location-ship'
 }; 
 
 //>>>>>>>> Declare Function
