@@ -1,0 +1,41 @@
+body{
+  background: url("../img/BG.png");
+}
+.login-page{
+  padding-top: 150px;
+  height: 72%;
+}
+.login-form{
+  width: 500px;
+  margin: 0px auto;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  background: #FFFFFF;
+}
+.login-form legend{
+  padding: 0px 10px;
+  width: 96%;
+  margin-bottom: 0px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0px 1px 2px #BCBCBC;
+}
+.login-form div.alert{
+  margin: 0px;
+  border-radius: 0px;
+  border: 0px;
+}
+.login-form form{
+  padding: 0px 30px;
+  margin-top: 30px;
+}
+.login-form form input[class*="input"]{
+  height: 30px;
+}
+.login-form form span.add-on{
+  width: 150px;
+}
+.login-form form .controls{
+  text-align: center;
+  margin-top: 20px;
+}
