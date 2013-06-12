@@ -1,17 +1,17 @@
-<?php include 'process/LockSession.php'; ?>
+<?php include '../process/LockSession.php'; ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Trang quản trị</title>
-    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" />
-    <link href="css/bootstrap-responsive.css" type="text/css" rel="stylesheet" />
-    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <link href="../css/bootstrap.css" type="text/css" rel="stylesheet" />
+    <link href="../css/bootstrap-responsive.css" type="text/css" rel="stylesheet" />
+    <link href="../css/style.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    <script type="text/javascript" src="js/common/common.js"></script>
-    <script type="text/javascript" src="js/common/language-vn.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/common/common.js"></script>
+    <script type="text/javascript" src="../js/common/language-vn.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <script type="text/javascript" src="js/common/layout.js"></script>
+    <script type="text/javascript" src="../js/common/layout.js"></script>
   </head>
   <body>
     <div id="header">

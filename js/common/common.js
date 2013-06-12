@@ -17,7 +17,7 @@ var dvtb = {
 
 //>>>>>>>> Declare Function
 //>>>>>>>>>>>>>>>>>>>>>>>>>
-dvtb.emptyFn = function(){};
+var emptyFn = function(){};
 var geturl = function(path){
   var url = dvtb.domain;
   var pathname = dvtb.path;
@@ -53,8 +53,8 @@ var checkEmpty = function(that) {
    * @param {Object} data
    * @param {Object} callback
    */
-  $.postJSON = function(url, data, callback){
-    var __callback = callback || dvtb.emptyFn;
-    $.post(url, data, function(json){__callback(json)}, 'json');
+  $.postJSON = function(url, data, fn){
+    var __fn = fn || emptyFn;
+    $.post(url, data, function(json){__fn(json)}, 'json');
   };
 })();

@@ -1,6 +1,6 @@
 <?php
-  include 'core/include/connect.php';
-  include 'core/include/ServiceAll.php';
+  include '../core/include/connect.php';
+  include '../core/include/ServiceAll.php';
   session_start();
   $shipcode = $_SESSION['LOGIN_CODE'];
   $service = new ServiceAll;

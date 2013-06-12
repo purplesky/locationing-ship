@@ -4,7 +4,7 @@
    * Login Service Class
    * return ship id if logged
    */
-class LoginService {
+class LoginService extends ServiceAll {
   /**
    * @param $shipid
    */

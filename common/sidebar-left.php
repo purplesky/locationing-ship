@@ -5,13 +5,13 @@
       Chức năng
     </li>
     <li>
-      <a href="dangkiem/"><i class="icon-tags"> </i> Quản lý đăng kiểm</a>
+      <a href="registration.php"><i class="icon-tags"> </i> Quản lý đăng kiểm</a>
     </li>
     <li>
-      <a href="qllt/"><i class="icon-retweet"> </i> Quản lý lịch trình ra vào</a>
+      <a href="../qllt/"><i class="icon-retweet"> </i> Quản lý lịch trình ra vào</a>
     </li>
     <li>
-      <a href="tctt/"><i class="icon-search"> </i> Tra cứu thông tin</a>
+      <a href="../tctt/"><i class="icon-search"> </i> Tra cứu thông tin</a>
     </li>
     <li class="active">
       <a href="javascript:;"><i class="icon-map-marker"> </i> Xem bản đồ lộ trình</a>

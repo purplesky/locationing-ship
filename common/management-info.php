@@ -1,4 +1,4 @@
-<?php include "core/include/connect.php"; ?>
+<?php include "../core/include/connect.php"; ?>
 <div id="management-info">
   <div id="out-to-sea" class="alert alert-error">
     <i class="icon-warning-sign"></i> Tàu đang trên biển
