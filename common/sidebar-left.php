@@ -14,7 +14,7 @@
       <a href="../tctt/"><i class="icon-search"> </i> Tra cứu thông tin</a>
     </li>
     <li class="active">
-      <a href="javascript:;"><i class="icon-map-marker"> </i> Xem bản đồ lộ trình</a>
+      <a href="locationing-ship.php"><i class="icon-map-marker"> </i> Xem bản đồ lộ trình</a>
     </li>
     <li>
       <a href="tdtk/"><i class="icon-globe"> </i> Thống kê - theo dõi</a>

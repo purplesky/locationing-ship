@@ -1,5 +1,6 @@
 <?php
   include '../../core/include/connect.php';
+  include '../../core/include/ServiceAll.php';
   /**
    * Login Service Class
    * return ship id if logged
@@ -50,7 +51,7 @@ class LoginService extends ServiceAll {
       $_SESSION['LOGIN_CODE'] = $reid;
       $result = array('status' => 'SUCCESS',
                     'code'  => $reid,
-                    'file'   => 'locationing-ship');
+                    'file'   => 'page/locationing-ship');
       return $result;
     }else{
       $result = array('status' => 'FAILED');

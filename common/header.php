@@ -11,7 +11,6 @@
     <script type="text/javascript" src="../js/common/common.js"></script>
     <script type="text/javascript" src="../js/common/language-vn.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <script type="text/javascript" src="../js/common/layout.js"></script>
   </head>
   <body>
     <div id="header">

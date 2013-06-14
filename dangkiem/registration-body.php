@@ -1,4 +1,4 @@
-<table class="table table-bordered table-hover">
+<table id="tbl-data-list-ship" class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>Stt</th>
@@ -13,7 +13,6 @@
     </tr>
   </thead>
   <tbody>
-    <tr></tr>
   </tbody>
 </table>
 <div class="pagination">
@@ -27,3 +26,4 @@
     <li><a href="#">Next</a></li>
   </ul>
 </div>
+<script type="text/javascript" src="../js/ui/RegistrationControl.js"></script>

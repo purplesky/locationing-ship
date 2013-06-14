@@ -3,6 +3,8 @@
  * File: layout.js
  */
 $(function(){
+  $('.nav-list li').removeClass('active');
+  $('.nav-list li:eq(4)').addClass('active');
   var mngInfo = {
     out: '#out-to-sea',
     ctrl: '#under-control',
@@ -49,7 +51,7 @@ $(function(){
   }, 1000); 
   
   // set map size =============
-  $('#htdvtb-map').css({"width":"1026px","height":"550px"});
+  $('#htdvtb-map').css({"height":"520px"});
   // import htdvtb map ========
   //---------------------------
   

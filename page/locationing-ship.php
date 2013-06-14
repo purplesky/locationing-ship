@@ -20,6 +20,7 @@ include "../common/header.php";
     </div>
   </div>
 </div>
+<script type="text/javascript" src="../js/common/layout.js"></script>
 <?php
 include "../common/footer.php";
 ?>

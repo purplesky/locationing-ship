@@ -1,5 +1,6 @@
 <?php
   include '../../core/include/connect.php';
+  include '../../core/include/ServiceAll.php';
 /**
  * Registration Service Class
  */
@@ -16,6 +17,27 @@ class RegistrationService extends ServiceAll {
       array_push($listCate, $cate);
     }
     return $listCate;
+  }
+  
+  public function getListShipRegistered($start, $limit){
+    $sql = "SELECT * FROM dvtb_quanlytv INNER JOIN dvtb_chung ON dvtb_quanlytv.MATAU = dvtb_chung.MATAU LIMIT '$start' , '$limit'";
+    mysql_query("SET NAMES utf8");
+    $sqlResult = mysql_query($sql);
+    //$numData   = mysql_num_rows($sqlResult);
+    $listData  = array();
+    while ($result = mysql_fetch_array($sqlResult)) {
+      $data = array('data'     => array(
+                    'code'     => $result['MATAU'],
+                    'shipname' => $result['TENTAU'],
+                    'shiptype' => $result['LOAITAU'],
+                    'weight'   => $result['TAITRONG'],
+                    'capacity' => $result['CONGSUAT'],
+                    'yearbuild'=> $result['NAMDONGTAU'],
+                    'unit'     => $result['DONVIQUANLY'],
+                    'ownname'  => $result['HOTEN']));
+      array_push($listData, $data);
+    }
+    return $listData;
   }
   
   /**
@@ -46,7 +68,7 @@ class RegistrationService extends ServiceAll {
     $ownname  = parent::breakSqlInjection($ownname);
     $hometown = parent::breakSqlInjection($hometown);
     if($this->checkShipExist($shipid)){
-      return array("status" => "ERROR-CREATE-EXIST");
+      return array("status" => "ERROR-CREATE-EXIST-CODE");
     }else{
       $addShipSQL = "INSERT INTO dvtb_chung (MATAU, IMTAU, TENTAU,HINHANH, LOAITAU, DAI, RONG, TAITRONG, CONGSUAT, TINH, NAMDONGTAU, DONVIQUANLY)
                      VALUES ('$shipid', '$ime', '$shipname', '$shipavt' ,'$shiptype', '$long', '$wide','$weight', '$capacity',  'Bình Thuận', '$yearbuilding','$unit')";

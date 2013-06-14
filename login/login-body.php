@@ -25,4 +25,4 @@
     </form>
   </div>
 </div>
-<script type="text/javascript" src="js/ui/LoginControl.js"></script>
+<script type="text/javascript" src="../js/ui/LoginControl.js"></script>
