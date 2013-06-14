@@ -22,15 +22,19 @@
   <tbody>
   </tbody>
 </table>
-<div id="pagination" class="pagination">
-  <ul>
-    <li><a href="#">Prev</a></li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li><a href="#">Next</a></li>
-  </ul>
+<div id="add-ship" class="model-right-util">
+  <div class="header-model">Model</div>
+  <div class="content-model">
+    <table border="0">
+      <tr><td>Mã tàu:</td><td><input class="input-large"/></td><td>IME</td><td><input class="input-large" colspan="3" /></td>
+          <td>Tên tàu:</td><td><input class="input-large" /></td></tr>
+    </table>
+  </div>
+  <div class="footer-model">
+    <button class="btn">Xóa trắng</button>
+    <button class="btn btn-primary">Đăng ký</button>
+  </div>
+</div>
+<div id="pagination">
 </div>
 <script type="text/javascript" src="../js/ui/RegistrationControl.js"></script>

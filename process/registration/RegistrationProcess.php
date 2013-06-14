@@ -8,10 +8,12 @@
    * Mapping Registration
    */
   if($action=='register'){
+    setShipId();
     setShipInfomation();
     registrationInfomation();
   }
   if($action=='updater'){
+    setShipId();
     setShipInfomation();
     updateRegistrationInfomation();
   }
@@ -49,6 +51,12 @@
     $registration = new RegistrationService;
     $result = array();
     $result = $registration->getListShipRegistered($start, $limit);
+    echo json_encode($result);
+  }
+  function getSumShipRegistered(){
+    $registration = new RegistrationService;
+    $result = array();
+    $result = $registration->getNumShipRegisterd();
     echo json_encode($result);
   }
   function registrationInfomation(){

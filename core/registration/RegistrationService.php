@@ -24,8 +24,8 @@ class RegistrationService extends ServiceAll {
     $sql = "SELECT dvtb_chung . * , dvtb_quanlytv . * FROM dvtb_chung INNER JOIN dvtb_quanlytv ON dvtb_chung.MATAU = dvtb_quanlytv.MATAU LIMIT $start, $limit";
     mysql_query("SET NAMES utf8");
     $sqlResult = mysql_query($sql);
-    //$numData   = mysql_num_rows($sqlResult);
     $listData  = array();
+    $numData   = $this->getNumShipRegisterd();
     while ($result = mysql_fetch_array($sqlResult)) {
       $data = array($result['MATAU'],
                     $result['TENTAU'],
@@ -37,7 +37,15 @@ class RegistrationService extends ServiceAll {
                     $result['HOTEN']);
       array_push($listData, $data);
     }
+    array_push($listData, $numData);
     return $listData;
+  }
+  /**
+   * 
+   */
+  public function getNumShipRegisterd(){
+    $sql = "SELECT dvtb_chung . * , dvtb_quanlytv . * FROM dvtb_chung INNER JOIN dvtb_quanlytv ON dvtb_chung.MATAU = dvtb_quanlytv.MATAU";
+    return array('total' => mysql_num_rows(mysql_query($sql)));
   }
   
   /**

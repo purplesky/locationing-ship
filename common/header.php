@@ -8,6 +8,7 @@
     <link href="../css/style.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/jquery.paging.cus.js"></script>
     <script type="text/javascript" src="../js/common/common.js"></script>
     <script type="text/javascript" src="../js/common/language-vn.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>

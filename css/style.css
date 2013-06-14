@@ -130,3 +130,27 @@ table tbody tr{
   float: right;
   margin-top: 0px;
 }
+
+
+/**
+ *   MODAL
+ */
+.modal-right-util{
+  height: 480px;
+  min-width: 900px;
+  max-width: 1000px;
+  position: absolute;
+  top: 90px;
+  background: #C0C0C0;
+  padding: 20px;
+  border-radius: 5px 0px 0px 5px;
+  right: 0px;
+}
+.modal-right-util .header-modal{
+  height: 20px;
+  background: #CCCCCC;
+  padding: 15px;
+  border-top-left-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+}

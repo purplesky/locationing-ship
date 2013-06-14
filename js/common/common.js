@@ -54,7 +54,7 @@ var renderDataTable = function(table, stt, header, data){
   var __thead = '<tr>';
   var __tbody = '<tr>';
   __thead += stt?'<th>Stt</th>':'';
-  for (var i = 0; i < data.length; i++) {
+  for (var i = 0; i < (data.length-1); i++) {
     __tbody += '<tr><td>' + (i + 1) + '</td>';
     for (var k = 0; k < header.length; k++) {
       __thead += i==0?'<th>'+header[k]+'</th>':'';
