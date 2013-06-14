@@ -47,6 +47,29 @@ var checkEmpty = function(that) {
     return false;
   }
 };
+/**
+ * 
+ */
+var renderDataTable = function(table, stt, header, data){
+  var __thead = '<tr>';
+  var __tbody = '<tr>';
+  __thead += stt?'<th>Stt</th>':'';
+  for (var i = 0; i < data.length; i++) {
+    __tbody += '<tr><td>' + (i + 1) + '</td>';
+    for (var k = 0; k < header.length; k++) {
+      __thead += i==0?'<th>'+header[k]+'</th>':'';
+      __tbody += '<td>' + data[i][k] + '</td>';
+    }
+    __tbody += '</tr>';
+  }
+  __thead += '</tr>';
+  $(table).find('thead').html(__thead);
+  $(table).find('tbody').html(__tbody);
+  var $tr = $(table).find('tbody').children('tr');
+  $tr.click(function(){
+    alert('click here');
+  });
+};
 (function(){
   /**
    * @param {Object} url

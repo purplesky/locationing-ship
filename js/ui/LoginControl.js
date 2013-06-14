@@ -41,7 +41,6 @@ $(function(){
       shippass: $(txt.secr).val()
     };
     $.postJSON(url, dt, function(data){
-      console.log(data);
       if(!!data){
         if (data.status=='SUCCESS'){
           dvtb.member = data.code;

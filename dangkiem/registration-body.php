@@ -1,3 +1,10 @@
+<div id="loading-mask" style=""></div>
+<div id="loading">
+  <div class="loading-indicator">
+    <img src="../images/ajax-loader.gif" class="loading-web-logo"/><br />
+    <span id="loading-msg" style="white-space: nowrap;">Loadding data...</span>
+  </div>
+</div>
 <table id="tbl-data-list-ship" class="table table-bordered table-hover">
   <thead>
     <tr>
@@ -15,7 +22,7 @@
   <tbody>
   </tbody>
 </table>
-<div class="pagination">
+<div id="pagination" class="pagination">
   <ul>
     <li><a href="#">Prev</a></li>
     <li><a href="#">1</a></li>

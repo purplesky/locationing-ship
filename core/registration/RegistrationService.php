@@ -27,15 +27,14 @@ class RegistrationService extends ServiceAll {
     //$numData   = mysql_num_rows($sqlResult);
     $listData  = array();
     while ($result = mysql_fetch_array($sqlResult)) {
-      $data = array('data'     => array(
-                    'code'     => $result['MATAU'],
-                    'shipname' => $result['TENTAU'],
-                    'shiptype' => $result['LOAITAU'],
-                    'weight'   => $result['TAITRONG'],
-                    'capacity' => $result['CONGSUAT'],
-                    'yearbuild'=> $result['NAMDONGTAU'],
-                    'unit'     => $result['DONVIQUANLY'],
-                    'ownname'  => $result['HOTEN']));
+      $data = array($result['MATAU'],
+                    $result['TENTAU'],
+                    $result['LOAITAU'],
+                    $result['TAITRONG'],
+                    $result['CONGSUAT'],
+                    $result['NAMDONGTAU'],
+                    $result['DONVIQUANLY'],
+                    $result['HOTEN']);
       array_push($listData, $data);
     }
     return $listData;
