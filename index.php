@@ -1,3 +1,3 @@
 <?php
-header("Location: locationing-ship.php");
+header("Location: page/locationing-ship.php");
 ?>

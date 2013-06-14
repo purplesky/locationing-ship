@@ -20,7 +20,8 @@ class RegistrationService extends ServiceAll {
   }
   
   public function getListShipRegistered($start, $limit){
-    $sql = "SELECT * FROM dvtb_quanlytv INNER JOIN dvtb_chung ON dvtb_quanlytv.MATAU = dvtb_chung.MATAU LIMIT '$start' , '$limit'";
+    //$sql = "SELECT dvtb_chung.*, dvtb_quanlytv.* FROM dvtb_chung INNER JOIN dvtb_quanlytv ON dvtb_chung.MATAU=dvtb_quanlytv.MATAU";
+    $sql = "SELECT dvtb_chung . * , dvtb_quanlytv . * FROM dvtb_chung INNER JOIN dvtb_quanlytv ON dvtb_chung.MATAU = dvtb_quanlytv.MATAU LIMIT $start, $limit";
     mysql_query("SET NAMES utf8");
     $sqlResult = mysql_query($sql);
     //$numData   = mysql_num_rows($sqlResult);

@@ -28,7 +28,7 @@ $(function(){
         var __item = data[i].data;
         __html += '<tr><td>'+(i+1)+'</td><td>'+__item.code+'</td><td>'+__item.shipname+'</td><td>'+
                   __item.shiptype+'</td><td>'+__item.weight+'</td></td>'+__item.capacity+'</td><td>'+
-                  __item.yearbuild+'</td><td>'+__item.unit||''+'</td><td>'+__item.ownname||''+'</td></tr>';
+                  __item.yearbuild+'</td><td>'+__item.unit+'</td><td>'+__item.ownname+'</td></tr>';
       };
       $(table).children('tbody').html(__html);
     });
