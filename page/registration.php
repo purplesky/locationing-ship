@@ -11,6 +11,7 @@ include "../common/header.php";
         <!--Body content-->
         <?php
         include "../common/management-info.php";
+        include "../common/toolbar.php";
         ?>
         <div class="content-cus">
           <!-- INSERT TABLE HERE -->

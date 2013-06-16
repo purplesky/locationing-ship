@@ -105,6 +105,8 @@ $(function(){
         });
         bindInfoWindow(marker, map, infoWindow, html);
       }
+      $('#loading-mask').hide();
+      $('#loading').hide();
     });
   }
   load();
