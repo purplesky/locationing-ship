@@ -1,16 +1,5 @@
 <table id="tbl-data-list-ship" class="table table-bordered table-hover">
   <thead>
-    <tr>
-      <th>Stt</th>
-      <th>Mã tàu</th>
-      <th>Tên tàu</th>
-      <th>Loại tàu</th>
-      <th>Tải trọng</th>
-      <th>Công suất</th>
-      <th>Năm đóng tàu</th>
-      <th>Đơn vị quản lý</th>
-      <th>Chủ tàu</th>
-    </tr>
   </thead>
   <tbody>
   </tbody>

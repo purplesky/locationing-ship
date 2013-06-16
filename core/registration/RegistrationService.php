@@ -70,6 +70,7 @@ class RegistrationService extends ServiceAll {
   public function addShipInfomation($shipid, $password, $ime, $shipname, $shipavt, $shiptype, 
                           $long, $wide, $weight, $capacity, $province, $yearbuilding, 
                           $unit, $ownname, $birthyear, $hometown, $phone){
+    mysql_query("SET NAMES utf8");
     $shipid   = parent::breakSqlInjection($shipid);
     $password = parent::breakSqlInjection($password);
     $shipname = parent::breakSqlInjection($shipname);
@@ -87,9 +88,7 @@ class RegistrationService extends ServiceAll {
       $addShipQuery = mysql_query($addShipSQL);
       $addManagerQuery = mysql_query($addManagerSQL);
       $addMemberQuery = mysql_query($addMemberSQL);
-      echo $addShipQuery;
-      echo $addManagerQuery;
-      echo $addMemberQuery;
+      return array("status" => "SUCCESS");
     }
   }
   
@@ -100,6 +99,7 @@ class RegistrationService extends ServiceAll {
   public function updateShipInfomation($shipid, $password, $ime, $shipname, $shipavt, $shiptype, 
                           $long, $wide, $weight, $capacity, $province, $yearbuilding, 
                           $unit, $ownname, $birthyear, $hometown, $phone){
+    mysql_query("SET NAMES utf8");
     $shipid   = parent::breakSqlInjection($shipid);
     $password = parent::breakSqlInjection($password);
     $shipname = parent::breakSqlInjection($shipname);
@@ -114,9 +114,7 @@ class RegistrationService extends ServiceAll {
       $updateShipQuery = mysql_query($updateShipSQL);
       $updateManagerQuery = mysql_query($updateManagerSQL);
       $updateMemberQuery = mysql_query($updateMemberSQL);
-      echo $updateShipQuery;
-      echo $updateManagerQuery;
-      echo $updateMemberQuery;
+      return array("status" => "SUCCESS");
     }else{
       return array("status" => "ERROR-UPDATE-NOT-EXIST");
     }
@@ -126,6 +124,7 @@ class RegistrationService extends ServiceAll {
    * @param $shipid
    */
   public function deleteShip($shipid){
+    mysql_query("SET NAMES utf8");
     parent::breakSqlInjection($shipid);
     if($this->checkShipExist($shipid)){
       $delShipSQL = "DELETE FROM dvtb_chung WHERE MATAU='$shipid'";
@@ -134,9 +133,7 @@ class RegistrationService extends ServiceAll {
       $delShipQuery = mysql_query($delShipSQL);
       $delManagerQuery = mysql_query($delManagerSQL);
       $delMemberQuery = mysql_query($delMemberSQL);
-      echo $delShipQuery;
-      echo $delManagerQuery;
-      echo $delMemberQuery;
+      return array("status" => "SUCCESS");
     }else{
       return array("status" => "ERROR-DELETE-NOT-EXIST");
     }

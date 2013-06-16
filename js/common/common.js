@@ -13,6 +13,9 @@ var dvtb = {
   title : document.title,
   path: window.location.pathname,
   prefix : 'location-ship'
+},
+obj = {
+  contentmsg: '#content-message'
 }; 
 
 //>>>>>>>> Declare Function
@@ -55,6 +58,9 @@ var checkEmpty = function(that) {
  * @param {Object} fn
  */
 var renderDataTable = function(table, stt, header, data, fn) {
+  $('#loading-mask').show();
+  $('#loading-msg').text('Loading data...');
+  $('#loading').show(); 
   var __thead = '<tr class="info">';
   var __tbody = '<tr>';
   __thead += stt ? '<th>Stt</th>' : '';
@@ -69,6 +75,8 @@ var renderDataTable = function(table, stt, header, data, fn) {
   __thead += '</tr>';
   $(table).find('thead').html(__thead);
   $(table).find('tbody').html(__tbody);
+  $('#loading-mask').hide();
+  $('#loading').hide();
   var $tr = $(table).find('tbody').children('tr');
   $tr.click(function() {
     fn($(this));
@@ -86,7 +94,7 @@ var showPopup = function(popup){
   }); 
 };
 var hidePopup = function($this){
-  var that = $this.parent().parent(),
+  var that = $this,
   width = that.width();
   that.animate({
     'right': -(width+50)
@@ -126,6 +134,6 @@ var setMessage = function(message, dest, type){
 })();
 $(function(){
   $('span[class*=modal-close]').click(function(){
-    hidePopup($(this));
+    hidePopup($(this).parent().parent());
   });
 });

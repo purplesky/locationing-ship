@@ -63,13 +63,8 @@ $(function(){
         };
         $.postJSON(url.action, dt, function(data){
           total = data.length;
-          $('#loading-mask').show();
-          $('#loading-msg').text('Loading data...');
-          $('#loading').show();
           var __header = ['Mã tàu','Tên tàu','Loại tàu','Tải trọng','Công suất','Năm đóng tàu','Đơn vị quản lý','Chủ tàu'];
           renderDataTable(table, true, __header, data, importDataToPopup);
-          $('#loading-mask').hide();
-          $('#loading').hide();
         });
       },
       importDataToPopup = function(data){
@@ -92,6 +87,7 @@ $(function(){
         showPopup(modal.add);
       };
   $(btn.add).click(function(){
+    owner.uuid = undefined;
     $(btn.del).hide();
     showPopup(modal.add);
   });
@@ -123,18 +119,30 @@ $(function(){
     }
     $.postJSON(url.action, data, function(jsonback){
       !!owner.uuid?(function(){
-        if(!!jsonback && !!jsonback.status &&
-          jsonback.status=='ERROR-UPDATE-NOT-EXIST'){
-          setMessage('Quá trình cập nhật dữ liệu không thành công, không tồn tại mã tàu!', obj.popupmsg, 'error');
+        if(!!jsonback && !!jsonback.status){
+          if(jsonback.status=='ERROR-UPDATE-NOT-EXIST'){
+            setMessage('Quá trình cập nhật dữ liệu không thành công, không tồn tại mã tàu!', obj.popupmsg, 'error');
+          }else if(jsonback.status=='SUCCESS'){
+            console.log('update xong');
+            loadDataListShip(obj.table);
+            hidePopup($(modal.add));
+            setMessage('Cập nhật dữ liệu thành công!', obj.contentmsg, 'success');
+          }
         }else{
-          setMessage('Cập nhật dữ liệu thành công!', obj.contentmsg, 'success');
+          setMessage('Quá trình cập nhật dữ liệu không thành công, không tồn tại mã tàu!', obj.popupmsg, 'error');
         }
       }):(function(){
-        if(!!jsonback && !!jsonback.status &&
-          jsonback.status=='ERROR-CREATE-EXIST-CODE'){
-          setMessage('Quá trình tạo dữ liệu không thành công, đã tồn tại mã tàu!', obj.popupmsg, 'error');
+        if(!!jsonback && !!jsonback.status){
+          if(jsonback.status=='ERROR-CREATE-EXIST-CODE'){
+            setMessage('Quá trình tạo dữ liệu không thành công, đã tồn tại mã tàu!', obj.popupmsg, 'error');
+          }else if(jsonback.status=='SUCCESS'){
+            console.log('tao xog');
+            loadDataListShip(obj.table);
+            hidePopup($(modal.add));
+            setMessage('Tạo dữ liệu thành công!', obj.contentmsg, 'success');
+          }
         }else{
-          setMessage('Tạo dữ liệu thành công!', obj.contentmsg, 'success');
+          setMessage('Quá trình tạo dữ liệu không thành công, đã tồn tại mã tàu!', obj.popupmsg, 'error');
         }
       });
     });
@@ -145,14 +153,19 @@ $(function(){
       'shipid' : owner.uuid
     };
     $.postJSON(url.action, data, function(jsonback){
-      if(!!jsonback && !!jsonback.status &&
-        jsonback.status=='ERROR-DELETE-NOT-EXIST'){
-        setMessage('Quá trình không dữ liệu không thành công, không tồn tại mã tàu!', obj.popupmsg, 'error');
+      if(!!jsonback && !!jsonback.status){
+        if(jsonback.status=='ERROR-DELETE-NOT-EXIST'){
+          setMessage('Quá trình xóa dữ liệu không thành công, không tồn tại mã tàu!', obj.popupmsg, 'error');
+        }else if(jsonback.status=='SUCCESS'){
+          loadDataListShip(obj.table);
+          hidePopup($(modal.add));
+          setMessage('Xóa dữ liệu thành công!', obj.contentmsg, 'success');
+        }
       }else{
-        setMessage('Xóa dữ liệu thành công!', obj.contentmsg, 'success');
+        setMessage('Quá trình xóa dữ liệu không thành công, không tồn tại mã tàu!', obj.popupmsg, 'error');
       }
     });
   })
-  loadCategoryType();
   loadDataListShip(obj.table);
+  loadCategoryType();
 });
