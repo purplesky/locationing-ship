@@ -8,6 +8,7 @@ class RegistrationService extends ServiceAll {
   
   public function categoryShip(){
     $sql = "SELECT * FROM dvtb_loaitau";
+    mysql_query("SET NAMES utf8");
     $sqlResult = mysql_query($sql);
     $listCate = array();
     while ($result = mysql_fetch_array($sqlResult)) {

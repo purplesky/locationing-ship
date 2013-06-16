@@ -1,6 +1,9 @@
 html{
   background: #F5F5F5;
 }
+input[type="text"], input[type="password"]{
+  height: auto;
+}
 #wrapper{
   margin-top: 40px;
 }
@@ -49,7 +52,7 @@ html{
   padding-left: 0px;
   background: #FFFFFF;
   border-radius: 4px;
-  height: 520px;
+  height: 485px;
   overflow: auto;
   clear: both;
 }
@@ -69,7 +72,9 @@ html{
   margin: 0px auto;
   padding: 10px 0px;
 }
-
+#toolbar{
+  margin-bottom: 8px;
+}
 /**
  *   loading
  */
@@ -136,21 +141,39 @@ table tbody tr{
  *   MODAL
  */
 .modal-right-util{
-  height: 480px;
-  min-width: 900px;
-  max-width: 1000px;
-  position: absolute;
-  top: 90px;
-  background: #C0C0C0;
-  padding: 20px;
+  max-width: 1200px;
+  position: fixed;
+  background: #FFFFFF;
   border-radius: 5px 0px 0px 5px;
-  right: 0px;
+  box-shadow: 0px 0px 10px #555555;
+  padding-bottom: 25px;
+  z-index: 21000;
+  right: -2000px;
+  display: none;
 }
 .modal-right-util .header-modal{
   height: 20px;
-  background: #CCCCCC;
-  padding: 15px;
+  background: #EDEDED;
+  padding: 10px;
   border-top-left-radius: 5px;
   font-weight: bold;
   text-align: center;
+  border-bottom: 1px solid #EDEDED;
+  text-shadow: 1px 0px 1px #FFFFFF;
+}
+.modal-right-util .header-modal .modal-close{
+  float: left;
+  cursor: pointer;
+}
+.modal-right-util .content-modal .toolbar-modal{
+  padding: 5px 10px;
+  border-bottom: 1px solid #EDEDED;
+}
+.modal-right-util .content-modal .body-modal{
+  padding: 25px 20px;
+}
+
+
+.form-add .tbl-title{
+  text-align: right;
 }

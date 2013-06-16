@@ -48,16 +48,19 @@ var checkEmpty = function(that) {
   }
 };
 /**
- * 
+ * @param {Object} table
+ * @param Boolean  stt
+ * @param {Object} header
+ * @param {Object} data
  */
-var renderDataTable = function(table, stt, header, data){
-  var __thead = '<tr>';
+var renderDataTable = function(table, stt, header, data, fn) {
+  var __thead = '<tr class="info">';
   var __tbody = '<tr>';
-  __thead += stt?'<th>Stt</th>':'';
-  for (var i = 0; i < (data.length-1); i++) {
+  __thead += stt ? '<th>Stt</th>' : '';
+  for (var i = 0; i < (data.length - 1); i++) {
     __tbody += '<tr><td>' + (i + 1) + '</td>';
     for (var k = 0; k < header.length; k++) {
-      __thead += i==0?'<th>'+header[k]+'</th>':'';
+      __thead += i == 0 ? '<th>' + header[k] + '</th>' : '';
       __tbody += '<td>' + data[i][k] + '</td>';
     }
     __tbody += '</tr>';
@@ -66,18 +69,45 @@ var renderDataTable = function(table, stt, header, data){
   $(table).find('thead').html(__thead);
   $(table).find('tbody').html(__tbody);
   var $tr = $(table).find('tbody').children('tr');
-  $tr.click(function(){
-    alert('click here');
+  $tr.click(function() {
+    fn($(this));
   });
+}; 
+var showPopup = function(popup){
+  var top = $('table[id*=tbl]').offset().top;
+  $('#loading-mask').show();
+  $(popup).css({
+    'top' : top
+  }).show().animate({
+    right : 0
+  }, {
+    duration : 300
+  }); 
+};
+var hidePopup = function($this){
+  var that = $this.parent().parent(),
+  width = that.width();
+  that.animate({
+    'right': -(width+50)
+  },{duration: 300}).fadeOut();
+  $('#loading-mask').hide();
+  setTimeout(function(){
+    that.find('input').val('');
+  },500);
 };
 (function(){
   /**
    * @param {Object} url
    * @param {Object} data
-   * @param {Object} callback
+   * @param {Object} fn
    */
   $.postJSON = function(url, data, fn){
     var __fn = fn || emptyFn;
     $.post(url, data, function(json){__fn(json)}, 'json');
   };
 })();
+$(function(){
+  $('span[class*=modal-close]').click(function(){
+    hidePopup($(this));
+  });
+});
