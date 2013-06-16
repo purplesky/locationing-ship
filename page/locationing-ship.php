@@ -12,7 +12,7 @@ include "../common/header.php";
         <?php
         include "../common/management-info.php";
         ?>
-        <div class="content-cus">
+        <div class="content-cus" style="height: 520px;">
           <!-- INSERT TABLE HERE -->
           <div id="htdvtb-map"></div>
         </div>
