@@ -3,22 +3,39 @@
   /**
    * import infomation a ship
    */
-  $action       = $_POST['action'];
+  $action         = $_POST['action'];
+  /*$password     = $_POST['password'];
+    $ime          = $_POST['shipime'];
+    $shipname     = $_POST['shipname'];
+    $shipavt      = $_POST['shipavt'];
+    $shiptype     = $_POST['shiptype'];
+    $long         = $_POST['long'];
+    $wide         = $_POST['wide'];
+    $weight       = $_POST['weight'];
+    $capacity     = $_POST['capacity'];
+    $province     = $_POST['province'];
+    $yearbuilding = $_POST['yearbuil']; 
+    $unit         = $_POST['unit'];
+    $ownname      = $_POST['ownname'];
+    $birthyear    = $_POST['birhyear'];
+    $hometown     = $_POST['hometown'];
+    $phone        = $_POST['phone'];
+    $shipid       = $_POST['shipid'];
   /**
    * Mapping Registration
    */
   if($action=='register'){
-    setShipId();
-    setShipInfomation();
+    //setShipId();
+    //setShipInfomation();
     registrationInfomation();
   }
   if($action=='updater'){
-    setShipId();
-    setShipInfomation();
+    //setShipId();
+    //setShipInfomation();
     updateRegistrationInfomation();
   }
   if($action=='delete'){
-    setShipId();
+    //setShipId();
     deleteRegistration();
   }
   if($action=='getlistshipregistered'){
@@ -26,7 +43,10 @@
     $limit = $_POST['limit'];
     getListData($start, $limit);
   }
-  function setShipId(){
+  if($action=='loadcategoryshiptype'){
+    loadCategoryShipType();
+  }
+  /*function setShipId(){
     $shipid       = $_POST['shipid'];
   }
   function setShipInfomation(){
@@ -46,6 +66,12 @@
     $birthyear    = $_POST['birhyear'];
     $hometown     = $_POST['hometown'];
     $phone        = $_POST['phone'];
+  }*/
+  function loadCategoryShipType(){
+    $registration = new RegistrationService;
+    $result = array();
+    $result = $registration->categoryShip();
+    echo json_encode($result);
   }
   function getListData($start, $limit){
     $registration = new RegistrationService;

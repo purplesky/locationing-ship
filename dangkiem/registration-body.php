@@ -22,8 +22,12 @@
   </div>
   <div class="content-modal">
     <div class="toolbar-modal">
-      <button id="btn-add" class="btn btn-primary"><i class="icon-ok icon-white"></i> Lưu</button>
+      <button id="btn-save" class="btn btn-primary"><i class="icon-ok icon-white"></i> Lưu</button>
       <button id="btn-delete" class="btn btn-danger"><i class="icon-trash icon-white"></i> Xóa</button>
+      <div id="popup-message" class="alert alert-success hide">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <span data-message="success"></span>
+      </div>
     </div>
     <div class="body-modal form-horizontal">
       <table border="0" class="form-add">

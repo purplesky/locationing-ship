@@ -52,6 +52,7 @@ var checkEmpty = function(that) {
  * @param Boolean  stt
  * @param {Object} header
  * @param {Object} data
+ * @param {Object} fn
  */
 var renderDataTable = function(table, stt, header, data, fn) {
   var __thead = '<tr class="info">';
@@ -90,10 +91,27 @@ var hidePopup = function($this){
   that.animate({
     'right': -(width+50)
   },{duration: 300}).fadeOut();
-  $('#loading-mask').hide();
   setTimeout(function(){
+    $('#loading-mask').hide();
     that.find('input').val('');
-  },500);
+    $('button[id*="btn"]').
+    removeAttr('disabled').
+    removeClass('disabled').show();
+  },300);
+};
+var setMessage = function(message, dest, type){
+  $(dest).find('span[data-message]').text(message);
+  if(type=='error'){
+    $(dest).removeClass('alert-success').addClass('alert-error');
+  }else if(type=='success'){
+    $(dest).removeClass('alert-error').addClass('alert-success');
+  }else{
+    $(dest).addClass('alert-warning');
+  }
+  $(dest).show();
+  setTimeout(function(){
+    $(dest).fadeOut(2000);
+  },2000);
 };
 (function(){
   /**
