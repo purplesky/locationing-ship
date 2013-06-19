@@ -12,7 +12,8 @@ $(function(){
       },
       obj = {
         table: tblCommon+'data-list-ship',
-        popupmsg: '#popup-message'
+        popupmsg: '#popup-message',
+        contentmsg: '#content-message'
       },
       owner = {},
       btn = {
@@ -54,7 +55,7 @@ $(function(){
       },
       loadDataListShip= function(table){
         var start = 0;
-        var limit = 11;
+        var limit = 99;
         var total = 92;
         var dt = {
           'action' : 'getlistshipregistered',
@@ -69,25 +70,27 @@ $(function(){
       },
       importDataToPopup = function(data){
         owner.uuid = data.children(':eq(1)').text();
-        $(txt.ime).attr('disabled','disabled').addClass('disabled');
-        $(txt.longs).attr('disabled','disabled').addClass('disabled');
-        $(txt.width).attr('disabled','disabled').addClass('disabled');
-        $(txt.avt).attr('disabled','disabled').addClass('disabled');
-        $(txt.pass).attr('disabled','disabled').addClass('disabled');
-        $(txt.hometown).attr('disabled','disabled').addClass('disabled');
-        $(txt.phone).attr('disabled','disabled').addClass('disabled');
-        $(txt.birthyear).attr('disabled','disabled').addClass('disabled');
-        $(txt.code).val(data.children(':eq(1)').text());
+        $(txt.ime).attr('disabled','disabled').addClass('disabled').val(data.children(':eq(9)').text());
+        $(txt.longs).attr('disabled','disabled').addClass('disabled').val(data.children(':eq(10)').text());
+        $(txt.width).attr('disabled','disabled').addClass('disabled').val(data.children(':eq(11)').text());
+        $(txt.avt).val(data.children(':eq(12)').text());
+        $(txt.pass).val(data.children(':eq(13)').text());
+        $(txt.hometown).val(data.children(':eq(14)').text());
+        $(txt.phone).val(data.children(':eq(15)').text());
+        $(txt.birthyear).val(data.children(':eq(16)').text());
+        $(txt.code).attr('disabled','disabled').addClass('disabled').val(data.children(':eq(1)').text());
         $(txt.name).val(data.children(':eq(2)').text());
         $(txt.capacity).val(data.children(':eq(5)').text());
         $(txt.weight).val(data.children(':eq(4)').text());
         $(txt.unit).val(data.children(':eq(7)').text());
         $(txt.yearbuild).val(data.children(':eq(6)').text());
         $(txt.owner).val(data.children(':eq(8)').text());
+        $(cbx.type).attr('disabled','disabled').addClass('disabled');
         showPopup(modal.add);
       };
   $(btn.add).click(function(){
     owner.uuid = undefined;
+    $(modal.add).find('input').removeAttr('disabled').removeClass('disabled');
     $(btn.del).hide();
     showPopup(modal.add);
   });
@@ -97,7 +100,7 @@ $(function(){
       'shipime'  : $(txt.ime).val(),
       'shipname' : $(txt.name).val(),
       'shipavt'  : $(txt.avt).val(),
-      'shiptype' : $(cbx.type).children(':selected').val(),
+      'shiptype' : $(cbx.type).children(':selected').text(),
       'long'     : $(txt.longs).val(),
       'wide'     : $(txt.width).val(),
       'weight'   : $(txt.weight).val(),
@@ -118,33 +121,31 @@ $(function(){
       data.shipid = $(txt.code).val();
     }
     $.postJSON(url.action, data, function(jsonback){
-      !!owner.uuid?(function(){
+      if(!!owner.uuid){
         if(!!jsonback && !!jsonback.status){
           if(jsonback.status=='ERROR-UPDATE-NOT-EXIST'){
             setMessage('Quá trình cập nhật dữ liệu không thành công, không tồn tại mã tàu!', obj.popupmsg, 'error');
           }else if(jsonback.status=='SUCCESS'){
-            console.log('update xong');
+            setMessage('Cập nhật dữ liệu thành công!', obj.contentmsg, 'success');
             loadDataListShip(obj.table);
             hidePopup($(modal.add));
-            setMessage('Cập nhật dữ liệu thành công!', obj.contentmsg, 'success');
           }
         }else{
           setMessage('Quá trình cập nhật dữ liệu không thành công, không tồn tại mã tàu!', obj.popupmsg, 'error');
         }
-      }):(function(){
+      }else{
         if(!!jsonback && !!jsonback.status){
           if(jsonback.status=='ERROR-CREATE-EXIST-CODE'){
             setMessage('Quá trình tạo dữ liệu không thành công, đã tồn tại mã tàu!', obj.popupmsg, 'error');
           }else if(jsonback.status=='SUCCESS'){
-            console.log('tao xog');
+            setMessage('Tạo dữ liệu thành công!', obj.contentmsg, 'success');
             loadDataListShip(obj.table);
             hidePopup($(modal.add));
-            setMessage('Tạo dữ liệu thành công!', obj.contentmsg, 'success');
           }
         }else{
           setMessage('Quá trình tạo dữ liệu không thành công, đã tồn tại mã tàu!', obj.popupmsg, 'error');
         }
-      });
+      };
     });
   });
   $(btn.del).click(function(){

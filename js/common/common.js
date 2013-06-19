@@ -13,14 +13,39 @@ var dvtb = {
   title : document.title,
   path: window.location.pathname,
   prefix : 'location-ship'
-},
-obj = {
-  contentmsg: '#content-message'
 }; 
 
 //>>>>>>>> Declare Function
 //>>>>>>>>>>>>>>>>>>>>>>>>>
 var emptyFn = function(){};
+var isEmpty = function(v){
+  return v==''||v==' ';
+}
+/**
+ * Convert Date Time to Long Date
+ * Time format hh:mm:ss dd/mm/yyyy
+ * @param {Object} strDateTime
+ */
+var convertDateTimeToLong = function(strDateTime) {
+  var strTime = strDateTime.split(" ")[0];
+  var strDate = strDateTime.split(" ")[1];
+  var stringDateTime = "" + strDate.split("/")[2] + "/"
+      + strDate.split("/")[1] + "/" + strDate.split("/")[0] + " "
+      + strTime;
+  return new Date(stringDateTime).getTime();
+};
+/**
+ * Convert Long to Date Time
+ * Time format hh:mm:ss dd/mm/yyyy
+ * @param {Object} numLong
+ */
+var convertLongToDateTime = function(numLong){
+  var numLong = parseFloat(numLong);
+  return new Date(numLong).toString("HH:mm dd/MM/yyyy");
+};
+/**
+ * @param {Object} path
+ */
 var geturl = function(path){
   var url = dvtb.domain;
   var pathname = dvtb.path;
@@ -62,17 +87,22 @@ var renderDataTable = function(table, stt, header, data, fn) {
   $('#loading-msg').text('Loading data...');
   $('#loading').show(); 
   var __thead = '<tr class="info">';
-  var __tbody = '<tr>';
+  var __tbody = '';
   __thead += stt ? '<th>Stt</th>' : '';
-  for (var i = 0; i < (data.length - 1); i++) {
-    __tbody += '<tr><td>' + (i + 1) + '</td>';
-    for (var k = 0; k < header.length; k++) {
-      __thead += i == 0 ? '<th>' + header[k] + '</th>' : '';
-      __tbody += '<td>' + data[i][k] + '</td>';
-    }
-    __tbody += '</tr>';
+  for (var k = 0; k < header.length; k++) {
+    __thead += '<th>' + header[k] + '</th>';
   }
   __thead += '</tr>';
+  for (var i=0; i < data.length; i++) {
+    __tbody += '<tr data-code="'+Math.floor((Math.random()*10000)*data[i].length)+'">';
+    __tbody += stt ? '<td class="show">' + (i + 1) + '</td>' : '';
+    var count = 0;
+    while(count<data[i].length){
+      __tbody += '<td class='+data[i][++count]+'>' + data[i][--count] + '</td>';
+      count+=2;
+    }
+    __tbody += '</tr>';
+  };
   $(table).find('thead').html(__thead);
   $(table).find('tbody').html(__tbody);
   $('#loading-mask').hide();
@@ -83,7 +113,7 @@ var renderDataTable = function(table, stt, header, data, fn) {
   });
 }; 
 var showPopup = function(popup){
-  var top = $('table[id*=tbl]').offset().top;
+  var top = $('.content-cus').offset().top;
   $('#loading-mask').show();
   $(popup).css({
     'top' : top
@@ -97,7 +127,7 @@ var hidePopup = function($this){
   var that = $this,
   width = that.width();
   that.animate({
-    'right': -(width+50)
+    'right': -(width+5)
   },{duration: 300}).fadeOut();
   setTimeout(function(){
     $('#loading-mask').hide();
@@ -105,7 +135,7 @@ var hidePopup = function($this){
     $('button[id*="btn"]').
     removeAttr('disabled').
     removeClass('disabled').show();
-  },300);
+  },200);
 };
 var setMessage = function(message, dest, type){
   $(dest).find('span[data-message]').text(message);
@@ -119,7 +149,7 @@ var setMessage = function(message, dest, type){
   $(dest).show();
   setTimeout(function(){
     $(dest).fadeOut(2000);
-  },2000);
+  },3000);
 };
 (function(){
   /**

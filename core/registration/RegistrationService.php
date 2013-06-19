@@ -21,24 +21,31 @@ class RegistrationService extends ServiceAll {
   }
   
   public function getListShipRegistered($start, $limit){
-    //$sql = "SELECT dvtb_chung.*, dvtb_quanlytv.* FROM dvtb_chung INNER JOIN dvtb_quanlytv ON dvtb_chung.MATAU=dvtb_quanlytv.MATAU";
-    $sql = "SELECT dvtb_chung . * , dvtb_quanlytv . * FROM dvtb_chung INNER JOIN dvtb_quanlytv ON dvtb_chung.MATAU = dvtb_quanlytv.MATAU LIMIT $start, $limit";
+    $sql = "SELECT dvtb_chung.*, dvtb_quanlytv.*, dvtb_quanly.* FROM dvtb_chung 
+            INNER JOIN dvtb_quanlytv ON dvtb_chung.MATAU = dvtb_quanlytv.MATAU 
+            INNER JOIN dvtb_quanly ON dvtb_chung.MATAU = dvtb_quanly.MATAU LIMIT $start, $limit";
     mysql_query("SET NAMES utf8");
     $sqlResult = mysql_query($sql);
     $listData  = array();
-    $numData   = $this->getNumShipRegisterd();
     while ($result = mysql_fetch_array($sqlResult)) {
-      $data = array($result['MATAU'],
-                    $result['TENTAU'],
-                    $result['LOAITAU'],
-                    $result['TAITRONG'],
-                    $result['CONGSUAT'],
-                    $result['NAMDONGTAU'],
-                    $result['DONVIQUANLY'],
-                    $result['HOTEN']);
+      $data = array($result['MATAU'], 'show',
+                    $result['TENTAU'], 'show',
+                    $result['LOAITAU'], 'show',
+                    $result['TAITRONG'], 'show',
+                    $result['CONGSUAT'], 'show',
+                    $result['NAMDONGTAU'], 'show',
+                    $result['DONVIQUANLY'], 'show',
+                    $result['HOTEN'], 'show',
+                    $result['IMTAU'], 'hide',
+                    $result['DAI'], 'hide',
+                    $result['RONG'], 'hide',
+                    $result['HINHANH'], 'hide',
+                    $result['MATKHAU'], 'hide',
+                    $result['QUEQUAN'], 'hide',
+                    $result['DIENTHOAI'], 'hide',
+                    $result['NAMSINH'], 'hide');
       array_push($listData, $data);
     }
-    array_push($listData, $numData);
     return $listData;
   }
   /**
@@ -88,7 +95,11 @@ class RegistrationService extends ServiceAll {
       $addShipQuery = mysql_query($addShipSQL);
       $addManagerQuery = mysql_query($addManagerSQL);
       $addMemberQuery = mysql_query($addMemberSQL);
-      return array("status" => "SUCCESS");
+      if(!$addShipQuery || !$addManagerQuery || !$addMemberQuery){
+        return array("status" => "ERROR-NOT-CREATE");
+      }else{
+        return array("status" => "SUCCESS");
+      }
     }
   }
   
@@ -107,14 +118,18 @@ class RegistrationService extends ServiceAll {
     $ownname  = parent::breakSqlInjection($ownname);
     $hometown = parent::breakSqlInjection($hometown);
     if($this->checkShipExist($shipid)){
-      $updateShipSQL = "UPDATE dvtb_chung  SET IMTAU = '$$ime', TENTAU = '$shipname', HINHANH = '$shipavt', DAI = '$long', RONG = '$wide',
-                        TAITRONG = '$weight',CONGSUAT = '$capacity', NAMDONGTAU =  '$yearbuilding' WHERE MATAU='$shipid'";
+      $updateShipSQL = "UPDATE dvtb_chung  SET IMTAU = '$ime', TENTAU = '$shipname', HINHANH = '$shipavt', DAI = '$long', RONG = '$wide',
+                        TAITRONG = '$weight', CONGSUAT = '$capacity', NAMDONGTAU =  '$yearbuilding', DONVIQUANLY='$unit' WHERE MATAU='$shipid'";
       $updateManagerSQL = "UPDATE dvtb_quanly SET MATKHAU = '$password', QUYENXEM = 'User' WHERE MATAU = '$shipid'";
       $updateMemberSQL = "UPDATE dvtb_quanlytv SET HOTEN = '$ownname', NAMSINH = '$birthyear', QUEQUAN = '$hometown', DIENTHOAI = '$phone' WHERE MATAU = '$shipid'";
       $updateShipQuery = mysql_query($updateShipSQL);
       $updateManagerQuery = mysql_query($updateManagerSQL);
       $updateMemberQuery = mysql_query($updateMemberSQL);
-      return array("status" => "SUCCESS");
+      if(!$updateShipQuery || !$updateManagerQuery || !$updateMemberQuery){
+        return array("status" => "ERROR-NOT-UPDATE");
+      }else{
+        return array("status" => "SUCCESS");
+      }
     }else{
       return array("status" => "ERROR-UPDATE-NOT-EXIST");
     }
@@ -129,11 +144,15 @@ class RegistrationService extends ServiceAll {
     if($this->checkShipExist($shipid)){
       $delShipSQL = "DELETE FROM dvtb_chung WHERE MATAU='$shipid'";
       $delManagerSQL = "DELETE FROM dvtb_quanly WHERE MATAU='$shipid'";
-      $delMemberSQL = "DELETE FROM dvtb_quanlyltv WHERE MATAU='$shipid'";
+      $delMemberSQL = "DELETE FROM dvtb_quanlytv WHERE MATAU='$shipid'";
       $delShipQuery = mysql_query($delShipSQL);
       $delManagerQuery = mysql_query($delManagerSQL);
       $delMemberQuery = mysql_query($delMemberSQL);
-      return array("status" => "SUCCESS");
+      if(!$delShipQuery || !$delManagerQuery || !$delMemberQuery){
+        return array("status" => "ERROR-NOT-DELETE");
+      }else{
+        return array("status" => "SUCCESS");
+      }
     }else{
       return array("status" => "ERROR-DELETE-NOT-EXIST");
     }
