@@ -1,5 +1,5 @@
 /**
- * @author ChiCong
+ * @author LeVanSang
  */
 (function($){
   $.fn.popup = function(options){

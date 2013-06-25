@@ -8,7 +8,7 @@ $(function(){
       txtCommon = '#txt-',
       tblCommon = '#tbl-',
       url = {
-        action: geturl('process/registration/RegistrationProcess')
+        action: geturl('process/qllt/managerProcess')
       },
       obj = {
         table: tblCommon+'data-list-ship',

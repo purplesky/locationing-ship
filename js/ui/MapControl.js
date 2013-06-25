@@ -56,7 +56,7 @@ $(function(){
   //---------------------------
   
   function bindInfoWindow(marker, map, infoWindow, html) {
-    google.maps.event.addListener(marker, 'click', function() {
+    google.maps.event.addListener(marker, 'mouseover', function() {
       infoWindow.setContent(html);
       infoWindow.open(map, marker);
     });
